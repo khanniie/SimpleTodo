@@ -20,13 +20,15 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-* :heavy_check_mark: Edited app colors for a more pleasant user experience :)
-* :heavy_check_mark: App will record & display the date that the todo note was created on. If the user edits & saves a todo note, the daet will change to reflect the day it was edited.
+* :heavy_check_mark: **Edited app colors** for a more pleasant user experience :)
+* :heavy_check_mark: App will **record & display the date that the todo note was created on**. If the user edits & saves a todo note, the daet will change to reflect the day it was edited.
 
 ## Video Walkthrough
 
-
-<img src='https://i.imgur.com/04rlXyL.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+Example of app is below.
+![Video Walkthrough](sample.gif)
+Example of app using persistance is below.
+![Video Walkthrough 2](sample2.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
