@@ -32,7 +32,9 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+I learned a lot about Andriod development! At first, I had a little bit of trouble understanding exactly how the Intents and Flows were working, but I understand them now!
+
+I also had trouble with time management and ended up submitting my assignment late, but I'll use the memory of the last minute terror I felt as motivation to work smarter next time. I wasted a bunch of time trying out pretty colors and trying to figure out how to change the font instead of working on the more important date feature.
 
 ## License
 
