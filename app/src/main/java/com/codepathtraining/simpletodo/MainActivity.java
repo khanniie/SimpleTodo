@@ -15,7 +15,9 @@ import org.apache.commons.io.FileUtils;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,22 +31,28 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> items;
     ArrayAdapter<String> itemsAdapter;
     ListView lvItems;
+    SimpleDateFormat formatter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         // obtain a reference to the ListView created with the layout
         lvItems = (ListView) findViewById(R.id.lvItems);
         // initialize the items list
         readItems();
         // initialize the adapter using the items list
         itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
+
         // wire the adapter to the view
         lvItems.setAdapter(itemsAdapter);
 
         // setup the listener on creation
         setupListViewListener();
+
+        String pattern = "MM/dd/Y";
+        formatter = new SimpleDateFormat(pattern);
     }
 
     private void setupListViewListener() {
@@ -68,8 +76,11 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // first parameter is the context, second is the class of the activity to launch
                 Intent i = new Intent(MainActivity.this, EditItemActivity.class);
+
                 // put "extras" into the bundle for access in the edit activity
-                i.putExtra(ITEM_TEXT, items.get(position));
+                String without_date = items.get(position).substring(14);
+                //i.putExtra(ITEM_TEXT, items.get(position));
+                i.putExtra(ITEM_TEXT, without_date);
                 i.putExtra(ITEM_POSITION, position);
                 // brings up the edit activity with the expectation of a result
                 startActivityForResult(i, EDIT_REQUEST_CODE);
@@ -83,6 +94,11 @@ public class MainActivity extends AppCompatActivity {
         EditText etNewItem = (EditText) findViewById(R.id.etNewItem);
         // grab the EditText's content as a String
         String itemText = etNewItem.getText().toString();
+
+        //adding time
+        String formattedTime = formatter.format(new Date()) + ":   ";
+        itemText = formattedTime + itemText;
+
         // add the item to the list via the adapter
         itemsAdapter.add(itemText);
         // store the updated list
