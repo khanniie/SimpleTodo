@@ -26,8 +26,11 @@ The following **additional** features are implemented:
 ## Video Walkthrough
 
 Example of app is below.
+
 ![Video Walkthrough](sample.gif)
+
 Example of app using persistance is below.
+
 ![Video Walkthrough 2](sample2.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
