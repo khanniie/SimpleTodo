@@ -17,6 +17,7 @@ public class EditItemActivity extends AppCompatActivity {
     EditText etItemText;
     // we need to track the item's position in the list
     int position;
+    //for adding date to the front of the notes
     SimpleDateFormat formatter;
 
     @Override
@@ -31,7 +32,7 @@ public class EditItemActivity extends AppCompatActivity {
         position = getIntent().getIntExtra(ITEM_POSITION, 0);
         // set the title bar to reflect the purpose of the view
         getSupportActionBar().setTitle("Edit Item");
-
+        //formatting for the date tags
         String pattern = "MM/dd/Y";
         formatter = new SimpleDateFormat(pattern);
     }
@@ -40,10 +41,9 @@ public class EditItemActivity extends AppCompatActivity {
         // Prepare intent to pass back to MainActivity
         Intent data = new Intent();
         // Pass updated item text and original position
-        //adding time
+        //adding time, gets time and formats it nicely
         String formattedTime = formatter.format(new Date()) + ":   ";
         String with_date = formattedTime + etItemText.getText().toString();
-        //data.putExtra(ITEM_TEXT, etItemText.getText().toString());
         data.putExtra(ITEM_TEXT, with_date);
         data.putExtra(ITEM_POSITION, position); // ints work too
         setResult(RESULT_OK, data); // set result code and bundle data for response

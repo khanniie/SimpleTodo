@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         // setup the listener on creation
         setupListViewListener();
 
+        //setup date formatter
         String pattern = "MM/dd/Y";
         formatter = new SimpleDateFormat(pattern);
     }
@@ -76,10 +77,10 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // first parameter is the context, second is the class of the activity to launch
                 Intent i = new Intent(MainActivity.this, EditItemActivity.class);
-
                 // put "extras" into the bundle for access in the edit activity
+
+                //we don't want the user to edit the date, so that's removed and passed in
                 String without_date = items.get(position).substring(14);
-                //i.putExtra(ITEM_TEXT, items.get(position));
                 i.putExtra(ITEM_TEXT, without_date);
                 i.putExtra(ITEM_POSITION, position);
                 // brings up the edit activity with the expectation of a result
@@ -95,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         // grab the EditText's content as a String
         String itemText = etNewItem.getText().toString();
 
-        //adding time
+        //adding time tags to the front
         String formattedTime = formatter.format(new Date()) + ":   ";
         itemText = formattedTime + itemText;
 
